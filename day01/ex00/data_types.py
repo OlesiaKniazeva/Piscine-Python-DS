@@ -11,6 +11,7 @@ def data_types():
     res = [type(integer).__name__, type(string).__name__, type(float_type).__name__,
            type(boolean).__name__, type(list_type).__name__, type(dictionary).__name__,
            type(tuple_type).__name__, type(set_type).__name__]
+
     print(str(res).replace('\'', ''))
 
 

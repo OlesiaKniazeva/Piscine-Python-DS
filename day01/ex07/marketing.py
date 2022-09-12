@@ -12,17 +12,17 @@ def get_people():
 
 def for_promotion_email():
     clients, participants, recipients = get_people()
-    return set(clients + participants).difference(recipients)
+    return list(set(clients + participants).difference(recipients))
 
 
 def potential_clients_list():
     clients, participants, recipients = get_people()
-    return set(participants).difference(clients)
+    return list(set(participants).difference(clients))
 
 
 def for_loyalty_program():
     clients, participants, recipients = get_people()
-    return set(clients).difference(participants)
+    return list(set(clients).difference(participants))
 
 
 def start(arg):

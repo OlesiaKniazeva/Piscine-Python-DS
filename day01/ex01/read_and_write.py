@@ -10,7 +10,7 @@ def change_delimeter():
                 continue
             if ch == ',' and flag:
                 copy = copy[:index] + '\t' + copy[index + 1:]
-            if ch == '"' and flag != True:
+            if ch == '"' and flag is not True:
                 flag = True
         f_out.write(copy)
     f.close()

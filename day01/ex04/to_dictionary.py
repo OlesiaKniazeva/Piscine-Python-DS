@@ -27,10 +27,7 @@ def get_tuple():
 def tuple_to_dict(tupl):
     dict = {}
     for x, y in tupl:
-        if y in dict:
-            dict[y].append(x)
-        else:
-            dict[y] = [x]
+        dict.setdefault(y, []).append(x)
     return dict
 
 
