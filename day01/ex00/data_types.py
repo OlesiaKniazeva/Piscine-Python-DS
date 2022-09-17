@@ -1,3 +1,4 @@
+#!/usr/bin/env python3
 def data_types():
     integer = 1
     string = "hi"

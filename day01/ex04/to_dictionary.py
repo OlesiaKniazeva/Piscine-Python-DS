@@ -1,3 +1,4 @@
+#!/usr/bin/env python3
 def get_tuple():
     tuples = [
         ('Russia', '25'),

@@ -1,3 +1,4 @@
+#!/usr/bin/env python3
 def change_delimeter():
     f = open('ds.csv', 'r')
     f_out = open('ds.tsv', 'w')
