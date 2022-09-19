@@ -8,18 +8,15 @@ def emails_data():
     return emails * 5
 
 
-def list_comprehension():
-    emails = emails_data()
+def list_comprehension(emails):
     return [x for x in emails if x.partition('@')[2] == 'gmail.com']
 
 
-def map_function():
-    emails = emails_data()
+def map_function(emails):
     return list(map(lambda x: x if x.partition('@')[2] == 'gmail.com' else None, emails))
 
 
-def loop():
-    emails = emails_data()
+def loop(emails):
     result = []
     for data in emails:
         if data.partition('@')[2] == 'gmail.com':
@@ -29,9 +26,10 @@ def loop():
 
 def compare_functions():
     time = 90_000_0
-    res = {'comp': timeit.timeit("list_comprehension()", setup="from __main__ import list_comprehension", number=time),
-           'loop': timeit.timeit("loop()", setup="from __main__ import loop", number=time),
-           'map': timeit.timeit("map_function()", setup="from __main__ import map_function", number=time)
+    emails = emails_data()
+    res = {'comp': timeit.timeit(f"list_comprehension({emails})", setup="from __main__ import list_comprehension", number=time),
+           'loop': timeit.timeit(f"loop({emails})", setup="from __main__ import loop", number=time),
+           'map': timeit.timeit(f"map_function({emails})", setup="from __main__ import map_function", number=time)
            }
     data = sorted(res.items(), key=lambda item: item[1])
     if data[0][0] == 'comp':

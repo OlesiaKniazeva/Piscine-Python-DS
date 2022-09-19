@@ -1,18 +1,24 @@
+import json
 import os
+import logging
 from random import randint
+import requests
 
 
 class Research:
     def __init__(self, path, header):
+        logging.debug("Creating class Research")
         self.path = path
         self.header = header
 
     def check_header(self, head):
+        logging.debug("Check if header is right")
         header = head.split(',')
         if len(header) != 2 or header[0] != 'head' or header[1] != 'tail':
             raise Exception("Wrong header")
 
     def file_reader(self):
+        logging.debug("Start to checking if file is right")
         if not os.access(self.path, os.R_OK):
             raise Exception('Couldn\'t read file')
         with open(self.path, 'r') as f:
@@ -31,30 +37,42 @@ class Research:
                 result.append([int(x) for x in nums])
             return result
 
+    def send_message_to_slack(self, message):
+        logging.debug("Sending message to slack")
+        webhook = "https://hooks.slack.com/services/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"
+        payload = {"text": message}
+        requests.post(webhook, json.dumps(payload))
+
     class Calculations:
         def __init__(self, data):
+            logging.debug("Creating class Calculations")
             self.data = data
 
         def counts(self):
+            logging.debug("Count sum of heads and tails")
             head = sum([row[0] for row in self.data])
             tail = sum([row[1] for row in self.data])
             return head, tail
 
         def fractions(self, head_tail):
+            logging.debug("Count fractions of heads and tails")
             s = head_tail[0] + head_tail[1]
             return 100.0 * head_tail[0] / s, 100.0 * head_tail[1] / s
 
     class Analytics(Calculations):
         def count_random(self, random):
+            logging.debug("Calculating random sum of heads and tails")
             head = sum([row[0] for row in random])
             tail = sum([row[1] for row in random])
             return head, tail
 
         def save_file(self, file_name, message):
+            logging.debug("Saving a message in file")
             with open(file_name, 'w') as file:
                 file.write(message)
 
         def predict_random(self, amount):
+            logging.debug("Making random list for predictions")
             data = []
             for s in range(amount):
                 if randint(0, 1) == 0:
@@ -64,4 +82,5 @@ class Research:
             return data
 
         def predict_last(self):
+            logging.debug("Return last data for predictions")
             return self.data

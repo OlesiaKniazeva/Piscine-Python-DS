@@ -26,14 +26,18 @@ def get_tuple():
 
 
 def tuple_to_dict(tupl):
-    dict = {}
+    dict_data = {}
     for x, y in tupl:
-        dict.setdefault(y, []).append(x)
-    return dict
+        dict_data.setdefault(y, []).append(x)
+    return dict_data
 
 
-if __name__ == '__main__':
+def main():
     d = tuple_to_dict(get_tuple())
     for k, v in d.items():
         for vv in v:
             print(f"'{k}' : '{vv}'")
+
+
+if __name__ == '__main__':
+    main()

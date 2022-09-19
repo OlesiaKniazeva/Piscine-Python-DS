@@ -32,7 +32,7 @@ def isascii(s):
     return len(s) == len(s.encode())
 
 
-if __name__ == '__main__':
+def main():
     if len(sys.argv) == 4:
         if sys.argv[1] == 'encode' or sys.argv[1] == 'decode':
             if not isascii(sys.argv[2]):
@@ -45,3 +45,7 @@ if __name__ == '__main__':
                 decode(sys.argv[2], int(sys.argv[3]))
     else:
         raise Exception('Wrong data')
+
+
+if __name__ == '__main__':
+    main()

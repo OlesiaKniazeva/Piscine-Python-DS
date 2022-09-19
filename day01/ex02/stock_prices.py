@@ -20,7 +20,7 @@ def companies_stocks():
     return companies, stocks
 
 
-if __name__ == '__main__':
+def main():
     if len(sys.argv) == 2:
         comp = sys.argv[1].capitalize()
         companies, stocks = companies_stocks()
@@ -29,3 +29,7 @@ if __name__ == '__main__':
             print("Unknown company")
         else:
             print(stocks.get(stock))
+
+
+if __name__ == '__main__':
+    main()

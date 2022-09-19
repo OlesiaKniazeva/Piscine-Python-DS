@@ -14,8 +14,12 @@ def write_letter(email):
     f.close()
 
 
-if __name__ == '__main__':
+def main():
     if len(sys.argv) == 2:
         write_letter(sys.argv[1])
     else:
         print('You should enter one argument')
+
+
+if __name__ == '__main__':
+    main()

@@ -44,6 +44,10 @@ def start(arg):
         print(sentence)
 
 
-if __name__ == '__main__':
+def main():
     if len(sys.argv) == 2:
         start(sys.argv[1])
+
+
+if __name__ == '__main__':
+    main()

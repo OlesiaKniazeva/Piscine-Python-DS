@@ -1,9 +1,9 @@
+#!/usr/bin/env python3
 import sys
 import os
 from random import randint
 
 
-# noinspection DuplicatedCode
 class Research:
     def __init__(self, path):
         self.path = path
@@ -59,31 +59,35 @@ class Research:
             return self.data
 
 
+def main():
+    try:
+        if len(sys.argv) != 2:
+            raise Exception("Wrong argument amount")
+        r = Research(sys.argv[1])
+        file = r.file_reader(True)
+        print(file)
+
+        calc = r.Calculations(file)
+        head, tail = calc.counts()
+        print(str(head) + ',' + str(tail))
+
+        fr1, fr2 = calc.fractions(head, tail)
+        print(str(fr1) + ',' + str(fr2))
+
+        analys = r.Analytics(file)
+        print('-----------\nrandom lists')
+        for i in range(3):
+            rand = randint(1, 25)
+            print(rand)
+            data = analys.predict_random(rand)
+            print(data)
+
+        print('---------------\nlast list')
+        res = analys.predict_last()
+        print(res)
+    except Exception as e:
+        print(e)
+
+
 if __name__ == '__main__':
-    if len(sys.argv) != 2:
-        raise Exception("Wrong argument amount")
-    r = Research(sys.argv[1])
-    file = r.file_reader(False)
-    print(file)
-
-    calc = r.Calculations(file)
-    head, tail = calc.counts()
-    print(str(head) + ',' + str(tail))
-
-    fr1, fr2 = calc.fractions(head, tail)
-    print(str(fr1) + ',' + str(fr2))
-
-    analys = r.Analytics(file)
-    print('-----------\nrandom lists')
-    for i in range(3):
-        rand = randint(0, 25)
-        print(rand)
-        data = analys.predict_random(rand)
-        print(data)
-
-    print('---------------\nlast list')
-    res = analys.predict_last()
-    print(res)
-
-
-
+    main()

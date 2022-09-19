@@ -1,3 +1,4 @@
+#!/usr/bin/env python3
 import sys
 import os
 
@@ -43,15 +44,22 @@ class Research:
             return 100.0 * h / s, 100.0 * t / s
 
 
+def main():
+    try:
+        if len(sys.argv) != 2:
+            raise Exception("Wrong argument amount")
+        r = Research(sys.argv[1])
+        file = r.file_reader(True)
+        print(file)
+
+        head, tail = r.Calculations.counts(file)
+        print(str(head) + ',' + str(tail))
+
+        fr1, fr2 = r.Calculations.fractions(head, tail)
+        print(str(fr1) + ',' + str(fr2))
+    except Exception as e:
+        print(e)
+
+
 if __name__ == '__main__':
-    if len(sys.argv) != 2:
-        raise Exception("Wrong argument amount")
-    r = Research(sys.argv[1])
-    file = r.file_reader(False)
-    print(file)
-
-    head, tail = r.Calculations.counts(file)
-    print(str(head) + ',' + str(tail))
-
-    fr1, fr2 = r.Calculations.fractions(head, tail)
-    print(str(fr1) + ',' + str(fr2))
+    main()

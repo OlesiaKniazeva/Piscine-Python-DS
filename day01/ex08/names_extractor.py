@@ -15,8 +15,12 @@ def extract_names(file):
     out.close()
 
 
-if __name__ == '__main__':
+def main():
     if len(sys.argv) == 2:
         extract_names(sys.argv[1])
     else:
         print('You should enter one argument')
+
+
+if __name__ == '__main__':
+    main()

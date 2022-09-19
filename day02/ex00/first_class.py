@@ -1,10 +1,12 @@
+#!/usr/bin/env python3
 class MustRead:
-        f = open('data.csv', 'r')
-        data = f.read()
-        print(data)
-        f.close()
+    try:
+        with open('data.csv', 'r') as f:
+            data = f.read()
+            print(data)
+    except IOError:
+        print("Error with file")
 
 
 if __name__ == '__main__':
     MustRead()
-

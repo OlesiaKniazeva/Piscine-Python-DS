@@ -38,10 +38,14 @@ def start(arg):
                         "\'loyalty_program\'")
 
 
-if __name__ == '__main__':
+def main():
     if len(sys.argv) == 2:
         data = start(sys.argv[1])
         print(data)
     else:
         raise Exception("Wrong argument. Enter as argument: \'call_center\' or \'potential_clients\' or "
                         "\'loyalty_program\'")
+
+
+if __name__ == '__main__':
+    main()

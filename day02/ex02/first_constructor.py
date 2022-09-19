@@ -1,3 +1,4 @@
+#!/usr/bin/env python3
 import sys
 import os
 
@@ -26,8 +27,15 @@ class Research:
             return file
 
 
+def main():
+    try:
+        if len(sys.argv) != 2:
+            raise Exception("Wrong argument amount")
+        r = Research(sys.argv[1])
+        print(r.file_reader())
+    except Exception as e:
+        print(e)
+
+
 if __name__ == '__main__':
-    if len(sys.argv) != 2:
-        raise Exception("Wrong argument amount")
-    r = Research(sys.argv[1])
-    print(r.file_reader())
+    main()

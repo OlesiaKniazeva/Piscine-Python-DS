@@ -8,13 +8,11 @@ def emails_data():
     return emails * 5
 
 
-def list_comprehension():
-    emails = emails_data()
+def list_comprehension(emails):
     return [x for x in emails if x.partition('@')[2] == 'gmail.com']
 
 
-def loop():
-    emails = emails_data()
+def loop(emails):
     result = []
     for data in emails:
         if data.partition('@')[2] == 'gmail.com':
@@ -23,9 +21,10 @@ def loop():
 
 
 def compare_functions():
-    time = 90_000_0
-    compr_res = timeit.timeit("list_comprehension()", setup="from __main__ import list_comprehension", number=time)
-    loop_res = timeit.timeit("loop()", setup="from __main__ import loop", number=time)
+    time = 900_000
+    emails = emails_data()
+    compr_res = timeit.timeit(f"list_comprehension({emails})", setup="from __main__ import list_comprehension", number=time)
+    loop_res = timeit.timeit(f"loop({emails})", setup="from __main__ import loop", number=time)
     if compr_res < loop_res:
         print('it is better to use a list comprehension')
         print(compr_res, 'vs', loop_res)

@@ -26,7 +26,7 @@ def get_company(stock_name, comp):
             return k
 
 
-if __name__ == '__main__':
+def main():
     if len(sys.argv) == 2:
         stock = sys.argv[1].upper()
         companies, stocks = companies_stocks()
@@ -35,3 +35,7 @@ if __name__ == '__main__':
             print('Unknown ticker')
         else:
             print(get_company(stock, companies), st_value)
+
+
+if __name__ == '__main__':
+    main()
