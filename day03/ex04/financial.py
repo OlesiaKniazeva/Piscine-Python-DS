@@ -51,7 +51,7 @@ def start_parsing(url, field):
     raise NoRequestedField()
 
 
-if __name__ == '__main__':
+def main():
     try:
         if len(sys.argv) != 3:
             raise WrongArgumentAmount()
@@ -61,3 +61,6 @@ if __name__ == '__main__':
     except (WrongArgumentAmount, PageNotFound, NoTickerSymbol, NoRequestedField) as e:
         print(e)
 
+
+if __name__ == '__main__':
+    main()

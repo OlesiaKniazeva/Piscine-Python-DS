@@ -26,8 +26,8 @@ class NoRequestedField(Exception):
 
 
 def get_page(url):
-    str = f'https://finance.yahoo.com/quote/{url}/financials?p={url}'
-    html_get = requests.get(str, headers={'User-Agent': 'Custom'})
+    url = f'https://finance.yahoo.com/quote/{url}/financials?p={url}'
+    html_get = requests.get(url, headers={'User-Agent': 'Custom'})
     if html_get.status_code != 200:
         raise PageNotFound()
     return html_get.text
@@ -51,7 +51,7 @@ def start_parsing(url, field):
     raise NoRequestedField()
 
 
-if __name__ == '__main__':
+def main():
     try:
         if len(sys.argv) != 3:
             raise WrongArgumentAmount()
@@ -61,3 +61,6 @@ if __name__ == '__main__':
     except (WrongArgumentAmount, PageNotFound, NoTickerSymbol, NoRequestedField) as e:
         print(e)
 
+
+if __name__ == '__main__':
+    main()

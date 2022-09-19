@@ -7,7 +7,7 @@ class WrongEnvironment(Exception):
     pass
 
 
-if __name__ == '__main__':
+def main():
     try:
         env = os.getenv('VIRTUAL_ENV')
         if env is None or env.split('/')[-1] != 'myael':
@@ -20,5 +20,5 @@ if __name__ == '__main__':
         os.system('tar -zcf myael.tar.gz ./myael')
 
 
-
-
+if __name__ == '__main__':
+    main()

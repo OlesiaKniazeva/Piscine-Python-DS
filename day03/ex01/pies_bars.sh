@@ -1,3 +1,3 @@
 #!/bin/bash
 
-termgraph data.dat --color {cyan,red}
+termgraph data.dat --color {green,yellow}
