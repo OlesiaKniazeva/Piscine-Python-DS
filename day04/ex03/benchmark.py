@@ -29,13 +29,20 @@ def functions():
         raise Exception('Wrong type of function')
 
 
-if __name__ == '__main__':
+def main():
     try:
         if len(sys.argv) != 4:
-            raise Exception("Enter as arguments amount to call function and number for the sum of the calculation "
-                            "squares")
+            raise Exception("Enter as arguments: function name, amount to call function and number for the sum of the "
+                            "calculation squares")
         functions()
     except ValueError:
         print('You should enter nums as second and third arguments')
+    except KeyboardInterrupt:
+        print("\nStopped")
     except Exception as e:
         print(e)
+
+
+if __name__ == '__main__':
+    main()
+

@@ -22,5 +22,7 @@ if __name__ == '__main__':
         print(f"User Mode Time + System Mode Time = {user_mode_time + system_mode_time:.2f}s")
     except FileNotFoundError as n:
         print(n)
+    except KeyboardInterrupt:
+        print("\nStopped")
     except Exception as e:
         print(e)

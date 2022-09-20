@@ -25,7 +25,7 @@ def loop(emails):
 
 
 def compare_functions():
-    time = 90_000_0
+    time = 900_000
     emails = emails_data()
     res = {'comp': timeit.timeit(f"list_comprehension({emails})", setup="from __main__ import list_comprehension", number=time),
            'loop': timeit.timeit(f"loop({emails})", setup="from __main__ import loop", number=time),
@@ -41,5 +41,12 @@ def compare_functions():
     print(data[0][1], 'vs', data[1][1], 'vs', data[2][1])
 
 
+def main():
+    try:
+        compare_functions()
+    except KeyboardInterrupt:
+        print("\nStopped")
+
+
 if __name__ == '__main__':
-    compare_functions()
+    main()

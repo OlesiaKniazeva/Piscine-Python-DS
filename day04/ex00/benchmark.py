@@ -33,5 +33,13 @@ def compare_functions():
         print(loop_res, 'vs', compr_res)
 
 
+def main():
+    try:
+        compare_functions()
+    except KeyboardInterrupt:
+        print("\nStopped")
+
+
 if __name__ == '__main__':
-    compare_functions()
+    main()
+

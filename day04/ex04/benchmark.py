@@ -40,7 +40,8 @@ def start():
     amount = 1
     random_list = generate_random_list()
     print('my function:', timeit.timeit(f"list_to_dictionary({random_list})", setup="from __main__ import "
-                                        "list_to_dictionary", number=amount))
+                                                                                    "list_to_dictionary",
+                                        number=amount))
     print('Counter:', timeit.timeit(f"dictionary_by_counter({random_list})",
                                     setup="from __main__ import dictionary_by_counter", number=amount))
     print('my top:', timeit.timeit(f"top_data_standard({random_list})",
@@ -49,5 +50,12 @@ def start():
                                            setup="from __main__ import top_data_counter", number=amount))
 
 
+def main():
+    try:
+        start()
+    except KeyboardInterrupt:
+        print("\nStopped")
+
+
 if __name__ == '__main__':
-    start()
+    main()
