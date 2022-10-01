@@ -1,7 +1,10 @@
-*.pdf
 *.md
 *.odt
-lutz_python_eng
-lutz_isuchaem_python
+#lutzthon_eng
+#lutz_isuchaem_python
 .*
 __pycache__
+*.cfg
+myael_venv
+venv_python_3.8
+#Абдрахманов М.И. - Pandas. Работа с данными - 2020.pdf
